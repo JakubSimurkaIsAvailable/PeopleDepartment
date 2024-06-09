@@ -1,0 +1,105 @@
+﻿<Window x:Class="ViewerWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ViewerWpfApp"
+        mc:Ignorable="d"
+        Title="People department viewer" Height="450" Width="800" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row ="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column ="0" Name="OpenButton" Content="Open..." Margin="10" Padding="15, 5, 15, 5" Click="OpenButton_Click"></Button>
+            <Label Grid.Column="1" Content="Department:" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <ComboBox Grid.Column="2" Name="DepartmentComboBox" Margin="10" Padding="15" SelectionChanged="DepartmentComboBox_SelectionChanged"></ComboBox>
+        </Grid>
+        <Grid Grid.Row ="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Head:" FontWeight="Bold" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Height="29" Width="48"></Label>
+            <Label Grid.Column="1" Name="HeadLabel" Content="{Binding Head}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="10" Width="10"></Label>
+        </Grid>
+        <Grid  Grid.Row ="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Deputy:" FontWeight="Bold" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label Grid.Column="1" Name="DeputyLabel" Content="{Binding Deputy}" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        </Grid>
+        <Grid Grid.Row ="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Secretary:" FontWeight="Bold" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label Grid.Column="1" Name="SecretaryLabel" Content="{Binding Secretary}" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+        </Grid>
+        <Grid Grid.Row ="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Employees: " FontSize="14" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+            <Label Grid.Column="1" Content="Count: " VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14"></Label>
+            <Label Grid.Column="2" Name="EmployeesCountLabel" Content="{Binding EmployeesCount}" FontSize="14" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Label>
+            
+        </Grid>
+        
+        <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Visible">
+            <ListView Name="EmployeesListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Title Before" Width="auto" DisplayMemberBinding="{Binding TitleBefore}"></GridViewColumn>
+                        <GridViewColumn Header="First Name" Width="Auto" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                        <GridViewColumn Header="Last Name" Width="Auto" DisplayMemberBinding="{Binding LastName}"></GridViewColumn>
+                        <GridViewColumn Header="Title After" Width="Auto" DisplayMemberBinding="{Binding TitleAfter}"></GridViewColumn>
+                        <GridViewColumn Header="Email" Width="Auto" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                        <GridViewColumn Header="Position" Width="Auto" DisplayMemberBinding="{Binding Position}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+        <Grid Grid.Row ="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="PhD. students: " FontSize="14" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+            <Label Grid.Column="1" Content="Count: " VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14"></Label>
+            <Label Grid.Column="2" Name="PhdStudentsCountLabel" Content="{Binding NumberOfPhDStudents}" FontSize="14" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Label>
+        </Grid>
+        <ScrollViewer Grid.Row="7">
+            <ListView Name ="PhDStudentsListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Title Before" Width="auto" DisplayMemberBinding="{Binding TitleBefore}"></GridViewColumn>
+                        <GridViewColumn Header="First Name" Width="Auto" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                        <GridViewColumn Header="Last Name" Width="Auto" DisplayMemberBinding="{Binding LastName}"></GridViewColumn>
+                        <GridViewColumn Header="Title After" Width="Auto" DisplayMemberBinding="{Binding TitleAfter}"></GridViewColumn>
+                        <GridViewColumn Header="Email" Width="Auto" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                        <GridViewColumn Header="Position" Width="Auto" DisplayMemberBinding="{Binding Position}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+    </Grid>
+</Window>
